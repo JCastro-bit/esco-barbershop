@@ -1,0 +1,406 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const whatsappUrl = "https://wa.me/523333970077?text=Qu%C3%A9%20onda%2C%20quiero%20agendar%20un%20corte%20en%20Esco";
+
+const services = [
+	{ name: "Low Fade", icon: "◣" },
+	{ name: "Mid Fade", icon: "◧" },
+	{ name: "High Fade", icon: "◥" },
+	{ name: "Diseño de Líneas", icon: "⟋" },
+	{ name: "Barba Sculpting", icon: "◈" },
+	{ name: "Color / Decoloración", icon: "◉" },
+	{ name: "Corte Clásico", icon: "✂" },
+	{ name: "Cejas", icon: "⟁" },
+];
+
+const testimonials = [
+	{ text: "Los mejores fades de GDL, sin discusión. Siempre salgo perfecto.", author: "Kevin R." },
+	{ text: "Encontré mi barbería. El ambiente está increíble y el corte siempre on point.", author: "Bryan M." },
+	{ text: "5 estrellas merecidas. Estos batos saben lo que hacen.", author: "Luis A." },
+];
+
+const vibeImages = [
+	{ src: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&h=750&fit=crop", alt: "Barbería moderna con luces neón" },
+	{ src: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&h=750&fit=crop", alt: "Fade perfecto" },
+	{ src: "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=600&h=750&fit=crop", alt: "Silla de barbero contemporánea" },
+	{ src: "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=600&h=750&fit=crop", alt: "Herramientas de barbería" },
+];
+
+const igImages = [
+	"https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=400&fit=crop",
+	"https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop",
+	"https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=400&h=400&fit=crop",
+	"https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=400&h=400&fit=crop",
+];
+---
+
+<Layout>
+	<!-- ═══════ HERO ═══════ -->
+	<section class="hero-gradient relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4">
+		<!-- Geometric decorations -->
+		<div class="geo-line geo-line-h absolute top-[15%] left-0"></div>
+		<div class="geo-line geo-line-h absolute bottom-[20%] left-0"></div>
+		<div class="geo-line geo-line-v absolute top-0 left-[10%] hidden lg:block"></div>
+		<div class="geo-line geo-line-v absolute top-0 right-[10%] hidden lg:block"></div>
+
+		<!-- Corner accents -->
+		<div class="absolute top-6 left-6 w-12 h-12 border-t border-l border-[var(--color-neon)] opacity-30"></div>
+		<div class="absolute top-6 right-6 w-12 h-12 border-t border-r border-[var(--color-neon)] opacity-30"></div>
+		<div class="absolute bottom-6 left-6 w-12 h-12 border-b border-l border-[var(--color-neon)] opacity-30"></div>
+		<div class="absolute bottom-6 right-6 w-12 h-12 border-b border-r border-[var(--color-neon)] opacity-30"></div>
+
+		<!-- Badge -->
+		<div class="reveal slide-up mb-6 md:mb-8 inline-flex items-center gap-2 border border-[var(--color-neon)] rounded-full px-5 py-2 text-sm tracking-widest uppercase" style="animation-delay: 0.1s;">
+			<span class="text-[var(--color-neon)]">★</span>
+			<span class="text-white/90 font-medium">5.0 · Rating perfecto · 25 reseñas</span>
+		</div>
+
+		<!-- ESCO massive -->
+		<h1 class="glitch-text font-[var(--font-display)] text-[clamp(6rem,22vw,16rem)] leading-[0.85] tracking-tight text-white text-center select-none" data-text="ESCO">
+			ESCO
+		</h1>
+
+		<!-- BARBERSHOP -->
+		<p class="font-[var(--font-display)] text-[clamp(1.2rem,4vw,2.8rem)] tracking-[0.35em] text-white/60 mt-2 md:mt-3 text-center uppercase">
+			Barbershop
+		</p>
+
+		<!-- Subtitle -->
+		<p class="reveal slide-up text-white/50 text-sm md:text-base tracking-[0.2em] uppercase mt-4 md:mt-6 text-center" style="animation-delay: 0.3s;">
+			Tu estilo, tu regla · Guadalajara
+		</p>
+
+		<!-- CTA -->
+		<a
+			href={whatsappUrl}
+			target="_blank"
+			rel="noopener"
+			class="reveal scale-in mt-10 md:mt-14 inline-block bg-[var(--color-neon)] text-black font-bold text-sm md:text-base tracking-[0.15em] uppercase px-10 py-4 hover:bg-white transition-colors duration-300 no-underline"
+			style="animation: neon-btn-pulse 2.5s ease-in-out infinite, scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;"
+		>
+			Agenda tu corte
+		</a>
+
+		<!-- Scroll indicator -->
+		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+			<span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+			<div class="w-px h-8 bg-gradient-to-b from-white to-transparent"></div>
+		</div>
+	</section>
+
+	<!-- ═══════ SERVICIOS ═══════ -->
+	<section class="relative py-24 md:py-32 px-4 overflow-hidden" id="servicios">
+		<!-- Section BG accent -->
+		<div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(57,255,20,0.015)] to-transparent pointer-events-none"></div>
+
+		<div class="max-w-6xl mx-auto relative">
+			<!-- Section label -->
+			<div class="reveal slide-up flex items-center gap-4 mb-4">
+				<div class="w-8 h-px bg-[var(--color-neon)]"></div>
+				<span class="text-[var(--color-neon)] text-xs tracking-[0.3em] uppercase font-semibold">Lo que hacemos</span>
+			</div>
+
+			<h2 class="reveal slide-up font-[var(--font-display)] text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] text-white mb-14" style="animation-delay: 0.1s;">
+				SERVICIOS
+			</h2>
+
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+				{services.map((s, i) => (
+					<div
+						class="reveal scale-in service-card neon-border bg-[var(--color-dark-card)] p-5 md:p-7 cursor-default group"
+						style={`animation-delay: ${0.1 + i * 0.07}s;`}
+					>
+						<span class="service-icon block text-2xl md:text-3xl text-white/40 mb-3 md:mb-4">{s.icon}</span>
+						<span class="text-white text-sm md:text-base font-semibold tracking-wide">{s.name}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════ EL VIBE ═══════ -->
+	<section class="relative py-24 md:py-32 px-4 overflow-hidden" id="vibe">
+		<div class="max-w-7xl mx-auto">
+			<!-- Section label -->
+			<div class="reveal slide-up flex items-center gap-4 mb-4">
+				<div class="w-8 h-px bg-[var(--color-neon-cyan)]"></div>
+				<span class="text-[var(--color-neon-cyan)] text-xs tracking-[0.3em] uppercase font-semibold">La experiencia</span>
+			</div>
+
+			<div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 md:mb-16 gap-6">
+				<h2 class="reveal slide-up font-[var(--font-display)] text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] text-white" style="animation-delay: 0.1s;">
+					EL VIBE
+				</h2>
+				<p class="reveal slide-left text-white/50 text-base md:text-lg max-w-md leading-relaxed" style="animation-delay: 0.2s;">
+					Más que una barbería.<br/>
+					<span class="text-white/80 font-medium">Un lugar donde tu estilo cobra vida.</span>
+				</p>
+			</div>
+
+			<!-- Photo grid — asymmetric, overlapping -->
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+				<div class="reveal slide-up col-span-2 md:row-span-2 relative overflow-hidden aspect-[4/5] md:aspect-auto" style="animation-delay: 0.15s;">
+					<img
+						src={vibeImages[0].src}
+						alt={vibeImages[0].alt}
+						class="vibe-img w-full h-full object-cover"
+						loading="lazy"
+					/>
+					<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+				</div>
+				<div class="reveal slide-up overflow-hidden aspect-square" style="animation-delay: 0.25s;">
+					<img
+						src={vibeImages[1].src}
+						alt={vibeImages[1].alt}
+						class="vibe-img w-full h-full object-cover"
+						loading="lazy"
+					/>
+				</div>
+				<div class="reveal slide-up overflow-hidden aspect-square" style="animation-delay: 0.35s;">
+					<img
+						src={vibeImages[2].src}
+						alt={vibeImages[2].alt}
+						class="vibe-img w-full h-full object-cover"
+						loading="lazy"
+					/>
+				</div>
+				<div class="reveal slide-up col-span-2 overflow-hidden aspect-[21/9]" style="animation-delay: 0.45s;">
+					<img
+						src={vibeImages[3].src}
+						alt={vibeImages[3].alt}
+						class="vibe-img w-full h-full object-cover"
+						loading="lazy"
+					/>
+				</div>
+			</div>
+
+			<!-- Floating accent text -->
+			<div class="reveal fade-in mt-8 md:mt-0 md:absolute md:-bottom-4 md:right-8 font-[var(--font-display)] text-[clamp(3rem,10vw,8rem)] text-white/[0.03] select-none leading-none pointer-events-none" style="animation-delay: 0.5s;">
+				CULTURE
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════ TESTIMONIOS ═══════ -->
+	<section class="relative py-24 md:py-32 px-4 overflow-hidden" id="testimonios">
+		<div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,229,255,0.01)] to-transparent pointer-events-none"></div>
+
+		<div class="max-w-6xl mx-auto relative">
+			<div class="reveal slide-up flex items-center gap-4 mb-4">
+				<div class="w-8 h-px bg-[var(--color-neon)]"></div>
+				<span class="text-[var(--color-neon)] text-xs tracking-[0.3em] uppercase font-semibold">La calle habla</span>
+			</div>
+
+			<h2 class="reveal slide-up font-[var(--font-display)] text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] text-white mb-14" style="animation-delay: 0.1s;">
+				RESEÑAS
+			</h2>
+
+			<div class="grid md:grid-cols-3 gap-4 md:gap-6">
+				{testimonials.map((t, i) => (
+					<div
+						class="reveal slide-up testimonial-card neon-border bg-[var(--color-dark-card)] p-7 md:p-9"
+						style={`animation-delay: ${0.15 + i * 0.12}s;`}
+					>
+						<div class="flex gap-1 text-[var(--color-neon)] text-sm mb-5">
+							<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+						</div>
+						<p class="text-white/80 text-base md:text-lg leading-relaxed mb-6 italic">
+							"{t.text}"
+						</p>
+						<div class="flex items-center gap-3">
+							<div class="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--color-neon)] to-[var(--color-neon-cyan)] flex items-center justify-center text-black text-xs font-bold">
+								{t.author.charAt(0)}
+							</div>
+							<span class="text-white/60 text-sm font-medium tracking-wide">{t.author}</span>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════ INSTAGRAM ═══════ -->
+	<section class="relative py-24 md:py-32 px-4 overflow-hidden" id="instagram">
+		<div class="max-w-6xl mx-auto">
+			<div class="reveal slide-up flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
+				<div>
+					<div class="flex items-center gap-4 mb-4">
+						<div class="w-8 h-px bg-[var(--color-neon-cyan)]"></div>
+						<span class="text-[var(--color-neon-cyan)] text-xs tracking-[0.3em] uppercase font-semibold">Instagram</span>
+					</div>
+					<h2 class="font-[var(--font-display)] text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] text-white">
+						SÍGUENOS
+					</h2>
+				</div>
+				<a href="#" class="text-white/40 text-sm tracking-widest uppercase hover:text-[var(--color-neon)] transition-colors no-underline">
+					@escobarbershop →
+				</a>
+			</div>
+
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+				{igImages.map((src, i) => (
+					<div class="reveal scale-in ig-item aspect-square" style={`animation-delay: ${0.1 + i * 0.08}s;`}>
+						<img
+							src={src}
+							alt={`Esco Barbershop Instagram ${i + 1}`}
+							class="w-full h-full object-cover"
+							loading="lazy"
+						/>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════ UBICACIÓN ═══════ -->
+	<section class="relative py-24 md:py-32 px-4 overflow-hidden" id="ubicacion">
+		<div class="absolute inset-0 bg-gradient-to-t from-[rgba(57,255,20,0.02)] to-transparent pointer-events-none"></div>
+
+		<div class="max-w-6xl mx-auto relative">
+			<div class="reveal slide-up flex items-center gap-4 mb-4">
+				<div class="w-8 h-px bg-[var(--color-neon)]"></div>
+				<span class="text-[var(--color-neon)] text-xs tracking-[0.3em] uppercase font-semibold">Encuéntranos</span>
+			</div>
+
+			<h2 class="reveal slide-up font-[var(--font-display)] text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] text-white mb-14" style="animation-delay: 0.1s;">
+				UBICACIÓN
+			</h2>
+
+			<div class="grid md:grid-cols-2 gap-8 md:gap-12">
+				<!-- Info -->
+				<div class="reveal slide-right space-y-8" style="animation-delay: 0.2s;">
+					<!-- Address -->
+					<div>
+						<h3 class="text-white/40 text-xs tracking-[0.3em] uppercase mb-3">Dirección</h3>
+						<p class="text-white text-lg font-medium">Guadalajara, Jalisco, México</p>
+					</div>
+
+					<!-- Phone -->
+					<div>
+						<h3 class="text-white/40 text-xs tracking-[0.3em] uppercase mb-3">Teléfono</h3>
+						<a href="tel:+523333970077" class="text-[var(--color-neon)] text-lg font-medium no-underline hover:text-white transition-colors">
+							+52 33 3397 0077
+						</a>
+					</div>
+
+					<!-- Hours -->
+					<div>
+						<h3 class="text-white/40 text-xs tracking-[0.3em] uppercase mb-3">Horario</h3>
+						<div class="space-y-2 text-white/70">
+							<div class="flex justify-between max-w-xs">
+								<span>Lunes – Viernes</span>
+								<span class="text-white font-medium">10:00 – 20:00</span>
+							</div>
+							<div class="flex justify-between max-w-xs">
+								<span>Sábado</span>
+								<span class="text-white font-medium">09:00 – 18:00</span>
+							</div>
+							<div class="flex justify-between max-w-xs">
+								<span>Domingo</span>
+								<span class="text-white/40">Cerrado</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- CTA -->
+					<a
+						href={whatsappUrl}
+						target="_blank"
+						rel="noopener"
+						class="inline-flex items-center gap-3 bg-[var(--color-neon)] text-black font-bold text-sm tracking-[0.1em] uppercase px-8 py-3.5 hover:bg-white transition-colors no-underline"
+					>
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+						Agenda por WhatsApp
+					</a>
+				</div>
+
+				<!-- Map -->
+				<div class="reveal slide-left neon-border overflow-hidden aspect-square md:aspect-auto" style="animation-delay: 0.3s;">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119218.37979517498!2d-103.4068939!3d20.6596988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b18cb52fd39b%3A0xd63d9302571db726!2sGuadalajara%2C%20Jal.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx"
+						class="w-full h-full min-h-[300px] md:min-h-full border-0 grayscale invert-[0.85] contrast-125"
+						allowfullscreen=""
+						loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"
+						title="Ubicación de Esco Barbershop en Guadalajara"
+					></iframe>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════ FOOTER ═══════ -->
+	<footer class="border-t border-white/5 py-10 px-4">
+		<div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+			<span class="font-[var(--font-display)] text-xl tracking-wide text-white/30">ESCO</span>
+			<p class="text-white/20 text-xs tracking-widest uppercase">
+				© 2026 Esco Barbershop · Guadalajara, México
+			</p>
+		</div>
+	</footer>
+
+	<!-- ═══════ WHATSAPP FLOTANTE ═══════ -->
+	<a
+		href={whatsappUrl}
+		target="_blank"
+		rel="noopener"
+		class="fixed bottom-6 right-6 z-[9999] w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 no-underline"
+		style="animation: wa-pulse 2s ease-in-out infinite;"
+		aria-label="Contactar por WhatsApp"
+	>
+		<svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+			<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+		</svg>
+	</a>
+</Layout>
+
+<script>
+	// Make hero elements visible immediately
+	document.querySelectorAll('section:first-of-type .reveal').forEach((el) => {
+		el.classList.add('visible');
+	});
+
+	// Scroll-triggered reveals with dual approach for reliability
+	const revealElements = document.querySelectorAll('.reveal:not(.visible)');
+
+	function checkReveals() {
+		revealElements.forEach((el) => {
+			if (el.classList.contains('visible')) return;
+			const rect = el.getBoundingClientRect();
+			if (rect.top < window.innerHeight + 100 && rect.bottom > -100) {
+				el.classList.add('visible');
+			}
+		});
+	}
+
+	// IntersectionObserver for efficient detection
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		},
+		{ threshold: 0, rootMargin: '100px 0px 0px 0px' }
+	);
+
+	revealElements.forEach((el) => observer.observe(el));
+
+	// Scroll fallback — catches fast scrolls the observer misses
+	let ticking = false;
+	window.addEventListener('scroll', () => {
+		if (!ticking) {
+			requestAnimationFrame(() => {
+				checkReveals();
+				ticking = false;
+			});
+			ticking = true;
+		}
+	}, { passive: true });
+
+	// Initial check
+	checkReveals();
+</script>

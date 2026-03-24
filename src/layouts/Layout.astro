@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "ESCO Barbershop · Tu estilo, tu regla · Guadalajara",
+	description = "Barbería moderna en Guadalajara. Fades perfectos, líneas limpias, el mejor ambiente. 5.0 estrellas. Agenda tu corte ahora."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta name="theme-color" content="#000000" />
+		<title>{title}</title>
+	</head>
+	<body class="scanlines">
+		<slot />
+	</body>
+</html>
+
+<style>
+	html, body {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+	}
+</style>
